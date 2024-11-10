@@ -1,5 +1,6 @@
 import math  
 import TISTAUTI as UT
+from TISTAUTI import print32
 
 
 def z_test(p_sample: float, p_null: float, sampleSize: int) -> float:
@@ -30,10 +31,10 @@ def t_test(x_bar: float, mu_null: float, s_sample: float, sampleSize: int) -> fl
 
     # Check for the condition when sample size is less than 15
     if conditionsForTTest[0]:
-        print("\n𝑛 < 15. The data should be very close to a Normal model. Do not use t-methods if there is strong skewness or outliers.")
+        print32("Sample Size < 15. The data should be very close to a Normal model. Do not use t-methods if there is strong skewness or outliers.")
     # Check for the condition when sample size is between 15 and 40
     elif conditionsForTTest[1]:
-        print("\n15 ≤ 𝑛 < 40. t-methods should work as long as the data is unimodal and reasonably symmetric (make a histogram). t-methods should not be used in the presence of outliers or strong skewness.")
+        print32("15 ≤ Sample Size < 40. t-methods should work as long as the data is unimodal and reasonably symmetric (make a histogram). t-methods should not be used in the presence of outliers or strong skewness.")
 
     # Calculate the numerator (difference between sample mean and null hypothesis mean)
     numerator = x_bar - mu_null

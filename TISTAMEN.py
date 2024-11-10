@@ -1,18 +1,21 @@
 import TISTAUTI as UT
+from TISTAUTI import print32
 import TISTAPY as TP
+from ti_system import disp_clr as dc
 
 
-def mainMenu():
+def menu1 ():
+    
     
     while True:
-        print("\nWelcome to TISTAPY - Statistics on TI-84 CE with Python")
+        dc()
+        print("[==============================]")
+        print("Welcome to TISTAPY")
+        print32("Statistics on TI-84 CE with Python")
         print("Select an option: ")
         print("[1] - Info")
         print("[2] - Z-Test")
         print("[3] - T-Test")
-        print("[4] - None")
-        print("[5] - None")
-        print("[6] - None")
         print("[0] - Exit the program")
 
         menuOption = UT.checkMenuOptions(0, 6)
@@ -21,6 +24,8 @@ def mainMenu():
             continue
 
         elif menuOption == 0:
+            dc()
+            print("Thank for using the program.")
             break
 
         elif menuOption == 1:
@@ -39,8 +44,11 @@ def mainMenu():
 def infoTPMenu ():
 
     while True:
-        print("\n[>>Info<<]")
-        print("TISTAPY is a python module specifically for TI calculators.")
+        dc()
+        print("[==============================]")
+        print("[>>Info<<]")
+        print("TISTAPY is a python module ")
+        print32("specifically for TI calculators.")
 
         if UT.wantGoToMenu():
             break
@@ -49,9 +57,12 @@ def infoTPMenu ():
 def z_testMenu():
 
     while True:
-        print("\n[>>Z-Test<<]")
+        dc()
+        print("[==============================]")
+        print("[>>Z-Test<<]")
         print("Select an option: ")
-        print("[1] - Calculate Z-Score for Z-Test")
+        print("[1] - Calculate Z-Score for ")
+        print("Z-Test")
         print("[2] - Info")
         print("[0] - Go to main menu")
 
@@ -77,12 +88,14 @@ def z_testMenu():
 
             z_score = TP.z_test(sampleProportion, nullProportion, sampleSize)
 
-            print("Your z-score for this Hypotesis is: ", z_score)
+            print32("Your z-score for this Hypotesis is: ", z_score)
+            input("Press Enter to continue...")
 
 
 
         elif optionMenu == 2:
-            print("Z-test is use to determine hypotesis about normal distributions")
+            print32("Z-test is use to determine hypotesis about normal distributions")
+            input("Press Enter to continue...")
 
         else:
             return 
@@ -91,9 +104,12 @@ def z_testMenu():
 def t_testMenu():
     
     while True:
-        print("\n[>>T-Test<<]")
+        dc()
+        print("[============================]")
+        print("[>>T-Test<<]")
         print("Select an option: ")
-        print("[1] - Calculate T-Score for T-Test")
+        print("[1] - Calculate T-Score for")
+        print("T-Test")
         print("[2] - Info")
         print("[0] - Go to main menu") 
 
@@ -115,15 +131,17 @@ def t_testMenu():
             if sampleStandardDeviation == None:
                 continue
 
-            sampleSize = UT.isSpecificInput("Enter your sample size: ", "int")
+            sampleSize = UT.isSpecificInput("Enter your sample size: ", "int", 2)
             if sampleSize == None:
                 continue
 
             t_score = TP.t_test(sampleMean, nullPopulation, sampleStandardDeviation, sampleSize)
             print("Your T-Score is: ", t_score)
+            input("Press Enter to continue...")
 
         elif optionMenu == 2:
-            print("T-test is use to determine main hypotesis about a normal distribution.")
+            print32("T-test is use to determine main hypotesis about a normal distribution.")
+            input("Press Enter to continue...")
         
         else:
             return
