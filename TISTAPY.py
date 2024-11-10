@@ -1,20 +1,20 @@
 import math  
+import TISTAUTI as UT
 
 
-
-def z_test(p_sample, p_null, sampleSize):
+def z_test(p_sample: float, p_null: float, sampleSize: int) -> float:
     # Conditions to check if the sample size is large enough for a Z-test
     conditionsForZTest = [(sampleSize * p_sample) < 10, sampleSize * (1 - p_sample) < 10]
 
     # If either of the conditions is violated (n*p or n*(1-p) should be >= 10), the test can't be executed
     if conditionsForZTest[0] or conditionsForZTest[1]:
-        print("\n\nFailed to execute operation: \n")
+        print("*Failed to execute operation: ")
         # Print specific failure conditions
         if conditionsForZTest[0]:
-            print("#! - Success Condition: We need 𝑛𝑝̂ ≥ 10.")
+            UT.errorDetection(301) 
         if conditionsForZTest[1]:
-            print("#! - Failure Condition: We need 𝑛(1 − 𝑝̂) ≥ 10.")
-        return False  # Return 0 to indicate failure to execute test
+            UT.errorDetection(302)
+        return None  # Return 0 to indicate failure to execute test
 
     # Calculate the numerator (difference between sample proportion and null proportion)
     numerator = p_sample - p_null
@@ -24,8 +24,7 @@ def z_test(p_sample, p_null, sampleSize):
     # Return the Z-test statistic, which is the ratio of the numerator and denominator
     return numerator / denominator
 
-
-def t_test(x_bar, mu_null, s_sample, sampleSize):
+def t_test(x_bar: float, mu_null: float, s_sample: float, sampleSize: int) -> float:
     # Conditions to determine whether the sample size is appropriate for a t-test
     conditionsForTTest = [sampleSize < 15, sampleSize >= 15 and sampleSize < 40]
 
